@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>იცოდი თუ არა რომ:</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #0f172a;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            color: #00aaff;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: linear-gradient(135deg, #007bff, #00aaff);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>იცოდი თუ არა რომ:</h1>
+        <ul>
+            <li>ყველაზე სწრაფი მანქანაა Bugatti Chiron Super Sport 300+ (304 mph).</li>
+            <li>იური გაგარინი იყო პირველი ადამიანი კოსმოსში (1961).</li>
+            <li>სინათლე მოგზაურობს 299,792,458 მეტრი წამში.</li>
+            <li>დრო ნელდება, როცა სინათლის სიჩქარით გადაადგილდები.</li>
+            <li>შავი ხვრელები იმდენად ძლიერია, რომ სინათლეც ვერ აღწევს მათგან.</li>
+            <li>ყველაზე დაბალი ტემპერატურაა -273.15°C (აბსოლუტური ნული).</li>
+            <li>კვანტური ნაწილაკებს შეუძლიათ ერთდროულად ორ ადგილას ყოფნა.</li>
+            <li>მძიმედობა არის ყველაზე სუსტი ძალა ოთხ ფუნდამენტურ ძალას შორის.</li>
+            <li>სამყარო აჩქარებული სიჩქარით ფართოვდება.</li>
+            <li>დიდი ადრონული კოლაიდერი ყველაზე მძლავრი ნაწილაკური ამაჩქარებელია.</li>
+        </ul>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const listItems = document.querySelectorAll("li");
+            listItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add("visible");
+                }, index * 300);
+            });
+        });
+    </script>
+</body>
+</html>
