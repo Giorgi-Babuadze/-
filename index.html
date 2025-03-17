@@ -5,31 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>იცოდი თუ არა რომ:</title>
     <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #ffffff;
+            --container-bg: #1e293b;
+            --fact-bg: linear-gradient(135deg, #007bff, #00aaff);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f4f4f4;
+            --text-color: #000;
+            --container-bg: #ffffff;
+            --fact-bg: linear-gradient(135deg, #ff8c00, #ffcc00);
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background-color: #0f172a;
-            color: #fff;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 20px;
+            transition: all 0.5s ease-in-out;
         }
+
         .container {
             max-width: 600px;
             margin: auto;
-            background: #1e293b;
+            background: var(--container-bg);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.5s ease-in-out;
         }
-        h2 {
+
+        h1 {
             color: #00aaff;
         }
+
+        button {
+            background: var(--fact-bg);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
         ul {
             list-style: none;
             padding: 0;
         }
+
         li {
-            background: linear-gradient(135deg, #007bff, #00aaff);
+            background: var(--fact-bg);
             padding: 15px;
             margin: 10px 0;
             border-radius: 10px;
@@ -38,8 +74,10 @@
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out, background 0.3s ease-in-out;
+            cursor: pointer;
         }
+
         .visible {
             opacity: 1;
             transform: translateY(0);
@@ -48,20 +86,22 @@
 </head>
 <body>
     <div class="container">
+        <button id="toggle-theme">გადართე Dark/Light</button>
         <h1>იცოდი თუ არა რომ:</h1>
         <ul>
-            <li>ყველაზე სწრაფი მანქანაა Bugatti Chiron Super Sport 300+ (304 mph).</li>
-            <li>იური გაგარინი იყო პირველი ადამიანი კოსმოსში (1961).</li>
-            <li>სინათლე მოგზაურობს 299,792,458 მეტრი წამში.</li>
-            <li>დრო ნელდება, როცა სინათლის სიჩქარით გადაადგილდები.</li>
-            <li>შავი ხვრელები იმდენად ძლიერია, რომ სინათლეც ვერ აღწევს მათგან.</li>
-            <li>ყველაზე დაბალი ტემპერატურაა -273.15°C (აბსოლუტური ნული).</li>
-            <li>კვანტური ნაწილაკებს შეუძლიათ ერთდროულად ორ ადგილას ყოფნა.</li>
-            <li>მძიმედობა არის ყველაზე სუსტი ძალა ოთხ ფუნდამენტურ ძალას შორის.</li>
-            <li>სამყარო აჩქარებული სიჩქარით ფართოვდება.</li>
-            <li>დიდი ადრონული კოლაიდერი ყველაზე მძლავრი ნაწილაკური ამაჩქარებელია.</li>
+            <li data-fact="ყველაზე სწრაფი მანქანაა Bugatti Chiron Super Sport 300+ (304 mph).">იცი თუ არა რომ?</li>
+            <li data-fact="იური გაგარინი იყო პირველი ადამიანი კოსმოსში (1961).">იცი თუ არა რომ?</li>
+            <li data-fact="სინათლე მოგზაურობს 299,792,458 მეტრი წამში.">იცი თუ არა რომ?</li>
+            <li data-fact="დრო ნელდება, როცა სინათლის სიჩქარით გადაადგილდები.">იცი თუ არა რომ?</li>
+            <li data-fact="შავი ხვრელები იმდენად ძლიერია, რომ სინათლეც ვერ აღწევს მათგან.">იცი თუ არა რომ?</li>
+            <li data-fact="ყველაზე დაბალი ტემპერატურაა -273.15°C (აბსოლუტური ნული).">იცი თუ არა რომ?</li>
+            <li data-fact="კვანტური ნაწილაკებს შეუძლიათ ერთდროულად ორ ადგილას ყოფნა.">იცი თუ არა რომ?</li>
+            <li data-fact="მძიმედობა არის ყველაზე სუსტი ძალა ოთხ ფუნდამენტურ ძალას შორის.">იცი თუ არა რომ?</li>
+            <li data-fact="სამყარო აჩქარებული სიჩქარით ფართოვდება.">იცი თუ არა რომ?</li>
+            <li data-fact="დიდი ადრონული კოლაიდერი ყველაზე მძლავრი ნაწილაკური ამაჩქარებელია.">იცი თუ არა რომ?</li>
         </ul>
     </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const listItems = document.querySelectorAll("li");
@@ -69,6 +109,34 @@
                 setTimeout(() => {
                     item.classList.add("visible");
                 }, index * 300);
+            });
+        });
+
+        document.getElementById("toggle-theme").addEventListener("click", () => {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            if (currentTheme === "light") {
+                document.documentElement.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.documentElement.setAttribute("data-theme", "light");
+                localStorage.setItem("theme", "light");
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                document.documentElement.setAttribute("data-theme", savedTheme);
+            }
+        });
+
+        document.querySelectorAll("li").forEach(item => {
+            item.addEventListener("click", () => {
+                item.style.transition = "all 0.5s ease-in-out";
+                item.textContent = item.dataset.fact;
+                item.style.background = "linear-gradient(135deg, #ff3e3e, #ff9e00)";
+                item.style.transform = "scale(1.05)";
+                setTimeout(() => item.style.transform = "scale(1)", 300);
             });
         });
     </script>
